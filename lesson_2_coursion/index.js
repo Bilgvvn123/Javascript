@@ -25,3 +25,11 @@
 // a = true;
 
 // a = null;
+
+// TODO Coursion
+// var jk = 1;
+// jk = jk + "text";
+
+// console.log(typeof jk);
+
+// TODO logic operator
