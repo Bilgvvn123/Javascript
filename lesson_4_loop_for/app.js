@@ -10,4 +10,9 @@ for (var i = 0; i < 4; i = i + 1) {
 	console.log("dsandanois");
 }
 
+function aaa() {
+	return 1;
+}
+aaa();
+
 console.log(s);
