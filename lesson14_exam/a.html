@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<style>
+			.hide {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<button class="btn">click</button>
+		<div class="div">
+			email: aaa@gmail.com
+			<br />
+			name: Ner
+		</div>
+
+		<script>
+			let div = document.querySelector(".div");
+			let btn = document.querySelector(".btn");
+
+			btn.addEventListener("click", () => {
+				div.classList.toggle("hide");
+			});
+		</script>
+	</body>
+</html>
