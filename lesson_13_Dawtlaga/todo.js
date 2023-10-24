@@ -2,54 +2,85 @@ const btn = document.querySelector(".btn");
 const output = document.querySelector(".todos");
 const input = document.querySelector(".input");
 
+//
 let arr = [];
 let arr2 = [];
 
-let addTodo = function (value, todoId) {
+function shineHiihymNemeh(utga, todoId) {
 	let newValue = {
-		todo: value,
-		id: todoId,
-		completed: false,
+		hiihYm: utga,
+		hiihYmniiId: todoId,
+		gvitsetgesenEseh: false,
 	};
 
 	arr.push(newValue);
 
-	return 3;
-};
+	console.log(arr);
+}
 
-let show = function () {
+// arr = [
+// 	{
+// 		hiihYm: "ideh",
+// 		hiihYmniiId: 5000,
+// 		gvitsetgesenEseh: false,
+// 	},
+// 	{
+// 		hiihYm: "untah",
+// 		hiihYmniiId: 5678900,
+// 		gvitsetgesenEseh: false,
+// 	},
+// ];
+
+let htmlDeerHaruulah = function () {
 	let niitTodos = "";
 
 	for (let i = 0; i < arr.length; i++) {
-		niitTodos += arr[i].todo;
+		niitTodos = niitTodos + arr[i].hiihYm;
 	}
 
 	output.innerHTML = niitTodos;
 };
 
-function deleteTodo(id) {
-	// console.log("===============> ", id);
+function deleteTodo(ustgahElementiinId) {
+	// console.log("first", ustgahEliinId);
+	// console.log("===============> ", ustgahElementiinId);
 	for (let i = 0; i < arr.length; i++) {
-		if (arr[i].id !== id) {
+		if (arr[i].hiihYmniiId !== ustgahElementiinId) {
 			arr2.push(arr[i]);
-			console.log("first");
 		}
 	}
 
-	show();
+	arr = arr2;
+	arr2 = [];
+
+	htmlDeerHaruulah();
+	console.log(arr);
 }
 
-btn.addEventListener("click", () => {
+function btniiFunction() {
 	let id = Math.floor(Math.random() * 10000000);
-	let value = `<p>${input.value} <button onclick="deleteTodo(${id})">delete</button></p>`;
-	// utgaa nemlee
-	addTodo(value, id);
 
-	// reset
+	console.log("=============> ID", id);
+
+	let value = `<p>${input.value} <button onclick="deleteTodo(${id})">delete</button>`;
+
+	console.log("=============>", value);
+	// utga nemdeg function
+	shineHiihymNemeh(value, id);
+
+	// reset hiideg function
 	input.value = "";
 
-	// doc deer haruullaa
-	show();
+	// doc deer haruuldag function
+	htmlDeerHaruulah();
 
-	console.log(arr);
-});
+	// console.log(arr);
+}
+
+btn.addEventListener("click", btniiFunction);
+
+let x = [1, 2, 3, 89, 22];
+let y = [4, 6, 7];
+y = [...y, ...x];
+console.log(...{ name: 22 });
+// console.log([2, 5, 6, 7, ...[8, 9, 10]]);
