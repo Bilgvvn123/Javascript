@@ -4,83 +4,82 @@ const input = document.querySelector(".input");
 
 //
 let arr = [];
-let arr2 = [];
 
-function shineHiihymNemeh(utga, todoId) {
+function addTodo(utga, todoId, completed) {
 	let newValue = {
-		hiihYm: utga,
-		hiihYmniiId: todoId,
-		gvitsetgesenEseh: false,
+		todo: utga,
+		id: todoId,
+		completed: completed,
 	};
 
+	// console.log(newValue);
+
+	// push
 	arr.push(newValue);
 
-	console.log(arr);
+	// console.log(arr);
 }
 
-// arr = [
-// 	{
-// 		hiihYm: "ideh",
-// 		hiihYmniiId: 5000,
-// 		gvitsetgesenEseh: false,
-// 	},
-// 	{
-// 		hiihYm: "untah",
-// 		hiihYmniiId: 5678900,
-// 		gvitsetgesenEseh: false,
-// 	},
-// ];
-
-let htmlDeerHaruulah = function () {
+let show = function () {
 	let niitTodos = "";
 
 	for (let i = 0; i < arr.length; i++) {
-		niitTodos = niitTodos + arr[i].hiihYm;
+		niitTodos = niitTodos + arr[i].todo;
 	}
 
 	output.innerHTML = niitTodos;
 };
 
-function deleteTodo(ustgahElementiinId) {
-	// console.log("first", ustgahEliinId);
+function deleteTodo(deleteId) {
+	let arr2 = [];
+	console.log("===========> BID NARIIN ID", deleteId);
 	// console.log("===============> ", ustgahElementiinId);
 	for (let i = 0; i < arr.length; i++) {
-		if (arr[i].hiihYmniiId !== ustgahElementiinId) {
+		if (arr[i].id !== deleteId) {
 			arr2.push(arr[i]);
 		}
 	}
 
 	arr = arr2;
-	arr2 = [];
-
-	htmlDeerHaruulah();
+	show();
 	console.log(arr);
+	console.log(arr2);
 }
 
-function btniiFunction() {
-	let id = Math.floor(Math.random() * 10000000);
-
-	console.log("=============> ID", id);
-
-	let value = `<p>${input.value} <button onclick="deleteTodo(${id})">delete</button>`;
-
-	console.log("=============>", value);
-	// utga nemdeg function
-	shineHiihymNemeh(value, id);
-
-	// reset hiideg function
+function resetInput() {
 	input.value = "";
-
-	// doc deer haruuldag function
-	htmlDeerHaruulah();
-
-	// console.log(arr);
 }
 
 btn.addEventListener("click", btniiFunction);
+function btniiFunction() {
+	let completed = false;
+	let id = Math.floor(Math.random() * 10000000);
+	let value = `<p onclick="com('${input.value}',${id})">${input.value} <button onclick="deleteTodo(${id})">del</button></p>`;
 
-let x = [1, 2, 3, 89, 22];
-let y = [4, 6, 7];
-y = [...y, ...x];
-console.log(...{ name: 22 });
-// console.log([2, 5, 6, 7, ...[8, 9, 10]]);
+	console.log(value);
+	// utga nemdeg function
+	addTodo(value, id, completed);
+	// reset hiideg function
+	resetInput();
+	// doc deer haruuldag function
+	show();
+}
+
+function com(utga, id) {
+	console.log(id);
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i].id == id) {
+			// console.log(arr[i]);
+			arr[i].completed = !arr[i].completed;
+			let x = arr[i].completed === true ? "lineT" : "";
+
+			arr[
+				i
+			].todo = `<p class="${x}" onclick="com('${utga}',${id})">${utga} <button onclick="deleteTodo(${id})">del</button></p>`;
+
+			console.log(arr[i]);
+		}
+	}
+
+	show();
+}
