@@ -17,15 +17,19 @@ function addTodo(utga, todoId, completed) {
 	// push
 	arr.push(newValue);
 
-	// console.log(arr);
+	console.log(arr);
 }
 
 let show = function () {
 	let niitTodos = "";
 
-	for (let i = 0; i < arr.length; i++) {
-		niitTodos = niitTodos + arr[i].todo;
-	}
+	arr.forEach(function (aa) {
+		niitTodos += aa.todo;
+	});
+
+	// for (let i = 0; i < arr.length; i++) {
+	// 	niitTodos = niitTodos + arr[i].todo;
+	// }
 
 	output.innerHTML = niitTodos;
 };
@@ -34,16 +38,20 @@ function deleteTodo(deleteId) {
 	let arr2 = [];
 	console.log("===========> BID NARIIN ID", deleteId);
 	// console.log("===============> ", ustgahElementiinId);
-	for (let i = 0; i < arr.length; i++) {
-		if (arr[i].id !== deleteId) {
-			arr2.push(arr[i]);
+	// for (let i = 0; i < arr.length; i++) {
+	// 	if (arr[i].id !== deleteId) {
+	// 		arr2.push(arr[i]);
+	// 	}
+	// }
+
+	arr.forEach(function (el) {
+		if (el.id !== deleteId) {
+			arr2.push(el);
 		}
-	}
+	});
 
 	arr = arr2;
 	show();
-	console.log(arr);
-	console.log(arr2);
 }
 
 function resetInput() {
@@ -54,9 +62,9 @@ btn.addEventListener("click", btniiFunction);
 function btniiFunction() {
 	let completed = false;
 	let id = Math.floor(Math.random() * 10000000);
-	let value = `<p onclick="com('${input.value}',${id})">${input.value} <button onclick="deleteTodo(${id})">del</button></p>`;
+	let value = `<p>${input.value}  <button onclick="boldBolgodog('${input.value}',${id})">Bold</button><button onclick="deleteTodo(${id})">del</button></p>`;
 
-	console.log(value);
+	// console.log(value);
 	// utga nemdeg function
 	addTodo(value, id, completed);
 	// reset hiideg function
@@ -65,21 +73,39 @@ function btniiFunction() {
 	show();
 }
 
-function com(utga, id) {
-	console.log(id);
+function boldBolgodog(value, id) {
 	for (let i = 0; i < arr.length; i++) {
-		if (arr[i].id == id) {
-			// console.log(arr[i]);
-			arr[i].completed = !arr[i].completed;
-			let x = arr[i].completed === true ? "lineT" : "";
-
+		if (arr[i].id === id) {
 			arr[
 				i
-			].todo = `<p class="${x}" onclick="com('${utga}',${id})">${utga} <button onclick="deleteTodo(${id})">del</button></p>`;
-
-			console.log(arr[i]);
+			].todo = `<p style="font-weight: bold">${value}  <button onclick="boldBolgodog(${id})">Bold</button><button onclick="deleteTodo(${id})">del</button></p>`;
 		}
 	}
-
+	console.log(arr);
 	show();
+	// console.log("bold bolcloo");
 }
+// function com(completedTodoId) {
+// onclick="com(${id})">${input.value}
+// 	console.log("================>", completedTodoId);
+// 	arr.forEach((el) => {
+// 		if (el.id === completedTodoId) {
+// 			el.completed = true;
+
+// 			let x;
+// 			if (el.completed === true) {
+// 				x = "lineT";
+// 			} else {
+// 				x = "";
+// 			}
+
+// 			el.todo = `<h1 class="${x}">dasdasd</h1>`;
+// 		}
+// 	});
+// 	show();
+// 	console.log(arr);
+// }
+
+let xx = [2, 4, 5];
+xx[2] = 10;
+console.log(xx);
