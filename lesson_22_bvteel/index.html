@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="overlay"></div>
+
+			<div class="content">
+				<!-- navbar -->
+				<div class="navbar">
+					<div class="logo"></div>
+
+					<ul>
+						<li>
+							<a>Home</a>
+						</li>
+						<li>
+							<a>About</a>
+						</li>
+						<li>
+							<a>Contact</a>
+						</li>
+						<li>
+							<a>Users</a>
+						</li>
+					</ul>
+				</div>
+
+				<!-- form -->
+				<form class="form">
+					<div class="item">
+						<label for="name">Name</label>
+						<input type="text" id="name" placeholder="name" />
+					</div>
+					<div class="item">
+						<label for="number">Number: </label>
+						<input type="number" id="number" placeholder="number" />
+					</div>
+					<div class="item">
+						<label for="email">Email</label>
+						<input type="email" id="email" placeholder="email" />
+					</div>
+					<button type="submit" class="btn">add</button>
+				</form>
+
+				<div class="users"></div>
+			</div>
+		</div>
+
+		<script src="./app.js"></script>
+	</body>
+</html>
